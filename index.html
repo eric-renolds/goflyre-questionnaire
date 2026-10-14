@@ -40,8 +40,7 @@ button.sec{background:#fff;color:var(--brand)}
 <main>
 <div class="intro">
 <p>Hi Tabitha — please answer the questions below for the GoFlyRE website's <strong>About Us</strong> and <strong>Contact Us</strong> pages. Your answers save automatically in this browser, so you can come back and finish later. When you're done, use <strong>Email answers</strong> at the bottom (or Download / Copy) to send them back to Eric.</p>
-<label for="sendto">Send answers to (Eric's email)</label>
-<input type="email" id="sendto" data-key="sendto" placeholder="eric@example.com">
+<p style="margin:8px 0 0"><strong>Answers go to:</strong> <a href="mailto:eric.renolds@nsolbpo.com">eric.renolds@nsolbpo.com</a></p>
 </div>
 <form id="f" onsubmit="return false"></form>
 </main>
@@ -97,8 +96,8 @@ function prog(){const a=fields.filter(e=>e.dataset.key!=="sendto"),n=a.filter(e=
 prog();
 function text(){let o="GoFlyRE — About Us & Contact Us Questionnaire\nAnswered by: Tabitha Booher\n\n";
  Q.forEach(pg=>{o+=`==== ${pg.p.toUpperCase()} ====\n\n`;pg.s.forEach(sec=>{o+=`-- ${sec.h} --\n`;sec.q.forEach(([k,t])=>{o+=`Q: ${t}\nA: ${(document.getElementById(k).value.trim()||"(no answer)")}\n\n`})})});return o}
-document.getElementById("email").onclick=()=>{const to=document.getElementById("sendto").value.trim();
- location.href=`mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent("GoFlyRE About/Contact page answers")}&body=${encodeURIComponent(text())}`};
+document.getElementById("email").onclick=()=>{const to="eric.renolds@nsolbpo.com";
+ location.href=`mailto:${to}?subject=${encodeURIComponent("GoFlyRE About/Contact page answers")}&body=${encodeURIComponent(text())}`};
 document.getElementById("dl").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text()],{type:"text/plain"}));a.download="GoFlyRE-answers-Tabitha.txt";a.click()};
 document.getElementById("copy").onclick=async()=>{try{await navigator.clipboard.writeText(text());st.textContent="Copied"}catch(e){st.textContent="Copy failed — use Download"}};
 </script>
