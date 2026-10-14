@@ -54,7 +54,7 @@ main{max-width:860px;margin:-64px auto 0;padding:0 16px 140px;position:relative;
 .tabs a:hover{border-color:var(--sky);color:var(--sky)}
 
 /* Page sections */
-.page-h{display:flex;align-items:center;gap:12px;margin:34px 0 14px;scroll-margin-top:80px}
+.page-h{display:flex;align-items:center;gap:12px;margin:34px 0 14px}
 .page-h .ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--navy);color:#fff;flex:none}
 .page-h .ico svg{width:22px;height:22px}
 .page-h h2{margin:0;font-size:1.5rem;letter-spacing:-.01em}
@@ -73,7 +73,8 @@ main{max-width:860px;margin:-64px auto 0;padding:0 16px 140px;position:relative;
 .q label{display:block;font-weight:600;margin-bottom:4px}
 .hint{color:var(--muted);font-size:.88rem;margin:0 0 10px}
 textarea,input[type=text]{width:100%;font:inherit;font-size:.97rem;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fbfcfe;color:var(--ink);transition:border-color .15s,box-shadow .15s,background .15s}
-textarea{min-height:100px;resize:vertical}
+textarea{min-height:84px;resize:vertical}
+textarea::placeholder,input::placeholder{color:#97a3b6;font-style:italic}
 textarea:focus,input:focus{outline:none;border-color:var(--sky);background:#fff;box-shadow:0 0 0 4px rgba(29,111,216,.12)}
 
 /* Bottom bar */
@@ -109,33 +110,22 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:30px}
     GoFlyRE
   </div>
   <h1>Help us tell the <span>GoFlyRE</span> story</h1>
-  <p>A short questionnaire for the website's About Us and Contact Us pages. Share as much or as little detail as you like. Rough notes are perfectly fine.</p>
+  <p>A few quick questions for the website's About Us and Contact Us pages. Short answers and rough notes are perfectly fine.</p>
   <div class="meta">
     <span class="chip">From <b>Eric Reynolds</b></span>
     <span class="chip">For <b>Tabitha Booher</b></span>
-    <span class="chip">~15 minutes</span>
   </div>
 </div></header>
 
 <main>
   <section class="welcome">
     <h2>Hi Tabitha 👋</h2>
-    <p>Your answers save automatically in this browser, so you can close the page and come back to finish later.</p>
-    <div class="steps">
-      <div class="step"><b>Step 1</b>Answer the questions below</div>
-      <div class="step"><b>Step 2</b>Click <strong>Email answers</strong> at the bottom</div>
-      <div class="step"><b>Step 3</b>Attach any photos and hit send</div>
-    </div>
+    <p>Just type your answers below. Each box has a small example to help you get started, and skip anything you're not sure about. Everything saves automatically. When you're done, click <strong>Email answers</strong> at the bottom.</p>
     <div class="to">Answers go to <a href="mailto:eric.renolds@nsolbpo.com">eric.renolds@nsolbpo.com</a></div>
   </section>
 
-  <nav class="tabs">
-    <a href="#about">About Us</a>
-    <a href="#contact">Contact Us</a>
-  </nav>
-
   <form id="f" onsubmit="return false"></form>
-  <footer>GoFlyRE · Website content questionnaire</footer>
+  <footer>GoFlyRE · Website questions</footer>
 </main>
 
 <div class="bar">
@@ -155,34 +145,34 @@ const ICONS={
  about:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>',
  contact:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>'};
 const Q=[
-{id:"about",p:"About Us Page",sub:"Your story, mission, team and credentials",s:[
- {h:"Company Story & Background",q:[
-  ["story","What is the story behind GoFlyRE? How and why was the company founded?"],
-  ["team_background","Is the founder or team composed of pilots, aviation enthusiasts, or specialized real estate brokers?"]]},
- {h:"Mission & Vision",q:[
-  ["mission","What is GoFlyRE's primary mission and promise to buyers, sellers, and aviation real estate agents?"],
-  ["differentiators","What sets GoFlyRE apart from generic platforms like Zillow or LandWatch?","e.g., deeded taxiway due diligence, runway dimension verification, pilot-centric specs"]]},
- {h:"Team & Leadership",opt:true,q:[
-  ["team_section","Would you like a \"Meet the Team\" or \"Leadership\" section?"],
-  ["team_details","If yes, please provide names, titles/roles, short bios, photos/headshots, and any aviation credentials.","e.g., FAA Commercial/Private Pilot, Tailwheel, IFR. Photos can be attached to the email."]]},
- {h:"Trust, Credentials & Partnerships",q:[
-  ["affiliations","Are there specific airpark associations, aviation networks, or brokerage affiliations you would like highlighted?"],
-  ["stats","Any key statistics to display?","e.g., airparks covered, years in business, verified runways"]]},
- {h:"Photos & Media",q:[
-  ["photos","Do you have specific photos of your team, office, aircraft, or favorite airparks you would like featured?","Describe them here; photo files can be attached to the email."]]}
+{id:"about",p:"About Us",sub:"Tell visitors who you are",s:[
+ {h:"Your Story",q:[
+  ["story","How did GoFlyRE get started?","Example: \"I'm a pilot and realtor. I started GoFlyRE in 2020 because buyers had no easy way to find homes with hangars and runway access.\""],
+  ["team_background","Who is behind GoFlyRE? Pilots, aviation fans, or real estate agents?","Example: \"Our team is licensed agents, and most of us are private pilots.\""]]},
+ {h:"What Makes You Different",q:[
+  ["mission","What is your main goal for buyers, sellers, and agents?","Example: \"To make buying and selling airpark property simple and trustworthy for pilots.\""],
+  ["differentiators","Why should someone use GoFlyRE instead of Zillow or LandWatch?","Example: \"We check runway length and surface, taxiway access rights, and hangar size — details other sites leave out.\""]]},
+ {h:"Your Team",opt:true,q:[
+  ["team_section","Would you like a \"Meet the Team\" section on the page?","Example: \"Yes\" or \"No, not right now\""],
+  ["team_details","If yes, list each person: name, role, a short bio, and any pilot licenses.","Example: \"Jane Smith – Broker – 15 years in aviation real estate – Private Pilot, IFR\" (you can email headshots separately)"]]},
+ {h:"Partners & Numbers",q:[
+  ["affiliations","Any associations or partners you'd like to show?","Example: \"Living With Your Plane, AOPA, our brokerage name\""],
+  ["stats","Any numbers you're proud of?","Example: \"300+ airparks listed, 10 years in business, 500 runways verified\""]]},
+ {h:"Photos",q:[
+  ["photos","Do you have photos you'd like to use?","Example: \"Team photo, our hangar office, aerial shots of a few airparks\" (attach them to the email)"]]}
 ]},
-{id:"contact",p:"Contact Us Page",sub:"How visitors reach and book time with you",s:[
- {h:"Official Contact Information",q:[
-  ["email","Support / General Email","e.g., contact@goflyre.com or inquiries@…",1],
-  ["phone","Phone Number","General inquiries or direct airpark specialist hotline",1],
-  ["address","Office / Mailing Address","City, State, Zip Code, and airport/hangar location if applicable"],
-  ["hours","Business Hours","e.g., Monday–Friday, 9:00 AM – 6:00 PM EST",1]]},
- {h:"Contact Form Inquiry Categories",q:[
-  ["categories","What dropdown options would you like visitors to choose from when sending a message?","Recommended: Buying an Airpark Property, Listing a Property / Hangar, Agent Partnership, General Inquiry"]]},
- {h:"Booking & Direct Consultation",q:[
-  ["scheduling","Do you use an online scheduling tool like Calendly to let pilots book a call with an aviation specialist?","If yes, please share the link."]]},
- {h:"Social Media Profiles",q:[
-  ["social","Which official social media links should we display?","LinkedIn, Facebook, Instagram, X/Twitter, YouTube — please paste the URLs."]]}
+{id:"contact",p:"Contact Us",sub:"How people can reach you",s:[
+ {h:"Contact Details",q:[
+  ["email","Email address for the website","Example: contact@goflyre.com",1],
+  ["phone","Phone number","Example: (555) 123-4567",1],
+  ["address","Office or mailing address","Example: 123 Runway Rd, Spruce Creek, FL 32128",1],
+  ["hours","Business hours","Example: Mon–Fri, 9 AM – 6 PM EST",1]]},
+ {h:"Contact Form",q:[
+  ["categories","What topics should visitors pick from when they send a message?","Example: Buying, Selling / Listing, Agent Partnership, General Question"]]},
+ {h:"Booking a Call",q:[
+  ["scheduling","Do you use a booking link (like Calendly)? If yes, paste it here.","Example: https://calendly.com/goflyre  — or \"No\""]]},
+ {h:"Social Media",q:[
+  ["social","Paste the links to your social media pages.","Example: Facebook: facebook.com/goflyre, Instagram: instagram.com/goflyre"]]}
 ]}];
 const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
 const KEY="goflyre-questionnaire-v1",f=document.getElementById("f");
@@ -192,7 +182,7 @@ Q.forEach(pg=>{
  pg.s.forEach(sec=>{n++;
   html+=`<section class="sec"><div class="sec-h"><div class="num">${n}</div><h3>${sec.h}</h3>${sec.opt?'<span class="tag">Optional</span>':''}<span class="count"></span></div>`;
   sec.q.forEach(([k,t,hint,short])=>{
-   html+=`<div class="q"><label for="${k}">${esc(t)}</label>${hint?`<p class="hint">${esc(hint)}</p>`:""}${short?`<input type="text" id="${k}" data-key="${k}" placeholder="Type your answer…">`:`<textarea id="${k}" data-key="${k}" placeholder="Type your answer…"></textarea>`}</div>`});
+   const ph=(hint||"Type your answer…").replace(/"/g,"&quot;");html+=`<div class="q"><label for="${k}">${esc(t)}</label>${short?`<input type="text" id="${k}" data-key="${k}" placeholder="${ph}">`:`<textarea id="${k}" data-key="${k}" placeholder="${ph}"></textarea>`}</div>`});
   html+=`</section>`})});
 f.innerHTML=html;
 
